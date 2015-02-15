@@ -3,7 +3,15 @@
 
 VERSION = 1.5.0
 
-CPPFLAGS += -I./include -I$(BUILDDIR)/include -I./ubi-utils/include $(ZLIBCPPFLAGS) $(LZOCPPFLAGS)
+PREFIX=/home/kostaz/mtd/install
+ZLIBCPPFLAGS=-I$(PREFIX)/include
+LZOCPPFLAGS=-I$(PREFIX)/include/lzo
+ZLIBLDFLAGS=-L$(PREFIX)/lib
+LZOLDFLAGS=-L$(PREFIX)/lib
+CROSS=arm-marvell-linux-gnueabi-
+CFLAGS ?= -O2 -g $(ZLIBCPPFLAGS) $(LZOCPPFLAGS) $(ZLIBLDFLAGS) $(LZOLDFLAGS)
+
+CPPFLAGS += -I./include -I$(BUILDDIR)/include -I./ubi-utils/include $(ZLIBCPPFLAGS) $(LZOCPPFLAGS) $(ZLIBLDFLAGS) $(LZOLDFLAGS)
 
 ifeq ($(WITHOUT_XATTR), 1)
   CPPFLAGS += -DWITHOUT_XATTR

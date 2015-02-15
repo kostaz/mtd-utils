@@ -21,7 +21,7 @@ ifneq ($(WITHOUT_LARGEFILE), 1)
 endif
 
 DESTDIR?=
-PREFIX=/usr
+PREFIX=/home/kostaz/mtd/install
 EXEC_PREFIX=$(PREFIX)
 SBINDIR=$(EXEC_PREFIX)/sbin
 MANDIR=$(PREFIX)/share/man
